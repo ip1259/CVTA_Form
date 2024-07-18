@@ -12,6 +12,9 @@ class ScoreBlock(InputBlock):
         super().__init__(title, must)
 
     def _generate_body(self):
+        def set_result(value):
+            self.result.append(value)
+
         with gr.Column() as _col:
             with gr.Row():
                 with gr.Column(min_width=0, scale=1):
@@ -26,12 +29,9 @@ class ScoreBlock(InputBlock):
                         gr.Text(self._max_score_desc, container=False, show_label=False, max_lines=1, min_width=0)
                 with gr.Column(min_width=0, scale=1):
                     pass
-        self.body = _col
+                self.score.change(set_result, [self.score])
 
-    def get_result(self):
-        if self.score is not None:
-            return self.score.value
-        return None
+        self.body = _col
 
     def get_input_components(self):
         # print([self.score])

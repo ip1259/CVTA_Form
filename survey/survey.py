@@ -67,7 +67,8 @@ class Survey:
 
             def next_body():
                 # print(1, args)
-                # print(2, self.body[self.cur_body_index].get_page_result(*args))
+                print(2, [c for c in self.body[self.cur_body_index].get_page_result()])
+                print(3, self.body[self.cur_body_index].must_has_done())
                 set_cur_body(self.cur_body_index + 1, _body_rows)
                 _result = []
                 for _r in _body_rows:

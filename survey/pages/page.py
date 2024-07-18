@@ -18,15 +18,15 @@ class Page:
         _cursor = 0
         for i, b in enumerate(self.page_blocks):
             if isinstance(b, InputBlock):
-                _results.append((type(b), b.must, args[_cursor]))
+                _results.append((type(b), b.must, b.get_result()))
                 _cursor += 1
         return _results
 
-    def must_has_done(self):
-        _results = self.get_page_result()
+    def must_has_done(self, *args):
+        _results = self.get_page_result(*args)
         if len(_results) != 0:
             for r in _results:
-                if r[1] and (r[2] is None):
+                if r[1] and (len(r[2]) == 0):
                     return False
         return True
 

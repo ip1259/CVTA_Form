@@ -8,6 +8,9 @@ class SuggestionBlock(InputBlock):
         super().__init__(title, must)
 
     def _generate_body(self):
+        def set_result(value):
+            self.result.append(value)
+
         with gr.Column() as _col:
             with gr.Row():
                 with gr.Column(min_width=0, scale=1):
@@ -18,12 +21,8 @@ class SuggestionBlock(InputBlock):
 
                 with gr.Column(min_width=0, scale=1):
                     pass
+            self.suggestion.change(set_result, [self.suggestion])
         self.body = _col
-
-    def get_result(self):
-        if self.suggestion is not None:
-            return self.suggestion.value
-        return None
 
     def get_input_components(self):
         return [self.suggestion]
