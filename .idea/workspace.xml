@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="修正InputBlock的子類別，在block中新增radio.change的方關解決方案，解決無法讀取使用者輸入問題">
-      <change beforePath="$PROJECT_DIR$/survey/pages/employment_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/employment_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/ta_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/ta_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/teacher_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/teacher_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/survey.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/survey.py" afterDir="false" />
+    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="新增阻擋必填未填寫換頁">
+      <change afterPath="$PROJECT_DIR$/TODO" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,13 +197,22 @@
       <option name="project" value="LOCAL" />
       <updated>1721292714477</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="新增阻擋必填未填寫換頁">
+      <option name="closed" value="true" />
+      <created>1721293283181</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1721293283181</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完成換頁功能，讀取使用者輸入功能失敗" />
     <MESSAGE value="修正InputBlock的子類別，在block中新增radio.change的方關解決方案，解決無法讀取使用者輸入問題" />
-    <option name="LAST_COMMIT_MESSAGE" value="修正InputBlock的子類別，在block中新增radio.change的方關解決方案，解決無法讀取使用者輸入問題" />
+    <MESSAGE value="新增阻擋必填未填寫換頁" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增阻擋必填未填寫換頁" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
