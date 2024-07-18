@@ -11,8 +11,8 @@ class TeacherPage(Page):
     Q4 = "4.請問{0}老師的上下課時間拿捏是否適當?*"
     Q5 = "5.對{0}老師的建議或想說的話?  (非必填)"
 
-    def __init__(self, _teacher: str, max_score: int = 5):
-        super().__init__()
+    def __init__(self, _teacher: str, parent, max_score: int = 5):
+        super().__init__(parent)
         self._teacher = _teacher
         self._max_score = max_score
         self._generate_page()
@@ -20,15 +20,9 @@ class TeacherPage(Page):
     def _generate_page(self):
         with gr.Row() as _row:
             with gr.Column():
-                self.page_blocks.append(ScoreBlock(TeacherPage.Q1.format(self._teacher)))
-                self.page_blocks.append(ScoreBlock(TeacherPage.Q2.format(self._teacher)))
-                self.page_blocks.append(ScoreBlock(TeacherPage.Q3.format(self._teacher)))
-                self.page_blocks.append(ScoreBlock(TeacherPage.Q4.format(self._teacher)))
-                self.page_blocks.append(SuggestionBlock(TeacherPage.Q5.format(self._teacher)))
+                self.page_blocks.append(ScoreBlock(TeacherPage.Q1.format(self._teacher), self.parent))
+                self.page_blocks.append(ScoreBlock(TeacherPage.Q2.format(self._teacher), self.parent))
+                self.page_blocks.append(ScoreBlock(TeacherPage.Q3.format(self._teacher), self.parent))
+                self.page_blocks.append(ScoreBlock(TeacherPage.Q4.format(self._teacher), self.parent))
+                self.page_blocks.append(SuggestionBlock(TeacherPage.Q5.format(self._teacher), self.parent))
         self.page = _row
-
-
-if __name__ == '__main__':
-    with gr.Blocks() as demo:
-        teacher = TeacherPage("簡進士")
-    demo.launch()

@@ -5,8 +5,8 @@ from survey.pages.page import Page
 
 
 class HeadPage(Page):
-    def __init__(self, title: str, desc: str):
-        super().__init__()
+    def __init__(self, title: str, desc: str, parent):
+        super().__init__(parent)
         self._title = title
         self._desc = desc
         self._generate_page()

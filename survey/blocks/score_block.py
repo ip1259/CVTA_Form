@@ -3,24 +3,28 @@ import gradio as gr
 
 
 class ScoreBlock(InputBlock):
-    def __init__(self, title: str, must: bool = True, max_score: int = 5, min_score_desc: str = "非常不滿意",
+    def __init__(self, title: str, parent, must: bool = True, max_score: int = 5, min_score_desc: str = "非常不滿意",
                  max_score_desc: str = "非常滿意"):
         self.score: gr.Radio | None = None
         self._max_score = max_score
         self._min_score_desc = min_score_desc
         self._max_score_desc = max_score_desc
-        super().__init__(title, must)
+        super().__init__(title, must, parent)
+        self._generate_body()
 
     def _generate_body(self):
-        def set_result(value):
-            self.result.append(value)
+        def set_result(value, request: gr.Request):
+            if request:
+                print(request.client.host)
+                _ip = request.client.host
+                self.parent.clients[_ip].response.set_response(self, value)
 
         with gr.Column() as _col:
             with gr.Row():
                 with gr.Column(min_width=0, scale=1):
                     pass
                 with gr.Column(variant="panel", scale=3, min_width=640):
-                    gr.Markdown(f"## {self._title}")
+                    gr.Markdown(f"## {self.title}")
                     with gr.Row():
                         gr.Text(self._min_score_desc, container=False, show_label=False, text_align='right',
                                 max_lines=1, min_width=0)

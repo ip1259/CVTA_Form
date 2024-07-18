@@ -4,8 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="新增阻擋必填未填寫換頁">
-      <change afterPath="$PROJECT_DIR$/TODO" afterDir="false" />
+    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/blocks/block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/blocks/head_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/head_block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/blocks/input_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/input_block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/blocks/score_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/score_block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/blocks/suggestion_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/suggestion_block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/pages/employment_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/employment_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/pages/head_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/head_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/pages/page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/pages/ta_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/ta_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/pages/teacher_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/teacher_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/survey.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/survey.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,19 +44,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.app.executor": "Run",
-    "Python.employment_page.executor": "Run",
-    "Python.head_block.executor": "Run",
-    "Python.head_page.executor": "Run",
-    "Python.ta_page.executor": "Run",
-    "Python.teacher_page.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.employment_page.executor&quot;: &quot;Run&quot;,
+    &quot;Python.head_block.executor&quot;: &quot;Run&quot;,
+    &quot;Python.head_page.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ta_page.executor&quot;: &quot;Run&quot;,
+    &quot;Python.teacher_page.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Data/Program_Project/Python/CVTA_Form&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CVTA_Form" />
@@ -158,9 +172,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.teacher_page" />
         <item itemvalue="Python.ta_page" />
         <item itemvalue="Python.employment_page" />
-        <item itemvalue="Python.teacher_page" />
         <item itemvalue="Python.head_page" />
       </list>
     </recent_temporary>
@@ -168,7 +182,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d68999036c7f-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.14475.56" />
+        <option value="bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241" />
       </set>
     </attachedChunks>
   </component>
@@ -181,48 +195,6 @@
       <option name="presentableId" value="Default" />
       <updated>1721181035871</updated>
     </task>
-    <task id="LOCAL-00001" summary="完成換頁功能，讀取使用者輸入功能失敗">
-      <option name="closed" value="true" />
-      <created>1721290374190</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1721290374190</updated>
-    </task>
-    <task id="LOCAL-00002" summary="修正InputBlock的子類別，在block中新增radio.change的方關解決方案，解決無法讀取使用者輸入問題">
-      <option name="closed" value="true" />
-      <created>1721292714477</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1721292714477</updated>
-    </task>
-    <task id="LOCAL-00003" summary="新增阻擋必填未填寫換頁">
-      <option name="closed" value="true" />
-      <created>1721293283181</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1721293283181</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="完成換頁功能，讀取使用者輸入功能失敗" />
-    <MESSAGE value="修正InputBlock的子類別，在block中新增radio.change的方關解決方案，解決無法讀取使用者輸入問題" />
-    <MESSAGE value="新增阻擋必填未填寫換頁" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增阻擋必填未填寫換頁" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

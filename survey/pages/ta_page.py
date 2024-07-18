@@ -9,20 +9,14 @@ class TAPage(Page):
     Q2 = "2.請問助教的專業程度是否滿意?*"
     Q3 = "3.對助教的建議或想說的話? (最少10個字或更多)非必填"
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
         self._generate_page()
 
     def _generate_page(self):
         with gr.Row() as _row:
             with gr.Column():
-                self.page_blocks.append(ScoreBlock(TAPage.Q1))
-                self.page_blocks.append(ScoreBlock(TAPage.Q2))
-                self.page_blocks.append(SuggestionBlock(TAPage.Q3))
+                self.page_blocks.append(ScoreBlock(TAPage.Q1, self.parent))
+                self.page_blocks.append(ScoreBlock(TAPage.Q2, self.parent))
+                self.page_blocks.append(SuggestionBlock(TAPage.Q3, self.parent))
         self.page = _row
-
-
-if __name__ == '__main__':
-    with gr.Blocks() as demo:
-        ta = TAPage()
-    demo.launch()

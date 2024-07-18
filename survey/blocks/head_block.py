@@ -6,6 +6,7 @@ class HeadBlock(Block):
     def __init__(self, title: str, desc: str):
         self._desc = desc
         super().__init__(title)
+        self._generate_body()
 
     def _generate_body(self):
         with gr.Column() as _col:
@@ -13,7 +14,7 @@ class HeadBlock(Block):
                 with gr.Column(min_width=0, scale=1):
                     pass
                 with gr.Column(variant="panel", scale=3, min_width=640):
-                    gr.Markdown(f"# {self._title}")
+                    gr.Markdown(f"# {self.title}")
                     gr.Markdown(self._desc)
                 with gr.Column(min_width=0, scale=1):
                     pass
