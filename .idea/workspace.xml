@@ -5,22 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/survey/blocks/input_block.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/survey/survey.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CVTA_Form.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CVTA_Form.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirments.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/blocks/block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/blocks/head_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/head_block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/blocks/input_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/input_block.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey/blocks/score_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/score_block.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey/blocks/suggestion_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/suggestion_block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/employment_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/employment_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/head_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/head_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey/pages/page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/ta_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/ta_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/teacher_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/teacher_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/survey.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/survey.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey/themes/themes.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/themes/themes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,20 +38,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.app.executor": "Run",
-    "Python.employment_page.executor": "Run",
-    "Python.head_block.executor": "Run",
-    "Python.head_page.executor": "Run",
-    "Python.ta_page.executor": "Run",
-    "Python.teacher_page.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Data/Program_Project/Python/CVTA_Form"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.employment_page.executor&quot;: &quot;Run&quot;,
+    &quot;Python.head_block.executor&quot;: &quot;Run&quot;,
+    &quot;Python.head_page.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ta_page.executor&quot;: &quot;Run&quot;,
+    &quot;Python.teacher_page.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CVTA_Form" />
@@ -175,9 +165,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.app" />
-        <item itemvalue="Python.teacher_page" />
         <item itemvalue="Python.ta_page" />
         <item itemvalue="Python.employment_page" />
+        <item itemvalue="Python.teacher_page" />
         <item itemvalue="Python.head_page" />
       </list>
     </recent_temporary>
@@ -185,7 +175,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241" />
+        <option value="bundled-python-sdk-d68999036c7f-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.14475.56" />
       </set>
     </attachedChunks>
   </component>
@@ -199,5 +189,16 @@
       <updated>1721181035871</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

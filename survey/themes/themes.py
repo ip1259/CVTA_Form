@@ -13,6 +13,10 @@ class SurveyTheme:
         }
         """
 
+    EMB_CSS = """#sendButton {background-color: #4EFEB3}
+                #sendButton:hover {background-color: #02F78E}
+    """
+
     EMB = gr.themes.Soft(
         primary_hue="emerald",
         neutral_hue="sky",

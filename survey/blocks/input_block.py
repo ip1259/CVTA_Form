@@ -8,3 +8,6 @@ class InputBlock(Block):
 
     def get_result(self):
         pass
+
+    def get_input_components(self):
+        pass

@@ -1,8 +1,9 @@
-import gradio as gr
-from survey.pages.pages import *
-from survey.pages.page import Page
-from survey.themes.themes import *
+import gradio.components.base
 from gradio.themes.base import Base
+
+from survey.pages.page import Page
+from survey.pages.pages import *
+from survey.themes.themes import *
 
 
 class Survey:
@@ -15,46 +16,96 @@ class Survey:
         self.class_name = class_name
         self.head: Page | None = None
         self.body: list[Page] | None = []
-        self.cur_body: int = -1
+        self.cur_body_index: int = -1
 
     def start_survey(self):
-        with gr.Blocks(js=SurveyTheme.JS, theme=self.survey_theme) as survey:
-            _body_rows = {}
+        def set_cur_body(index: int, _br: list[gradio.components.base.Component]):
+            self.cur_body_index = index
+            self.cur_body_index = min(self.cur_body_index, len(_br) - 1)
+            self.cur_body_index = max(self.cur_body_index, 0)
+            for _i, _r in enumerate(_br):
+                if isinstance(_r, gr.Row):
+                    if _i == self.cur_body_index:
+                        _r.visible = True
+                    else:
+                        _r.visible = False
+
+        with gr.Blocks(js=SurveyTheme.JS, css=SurveyTheme.EMB_CSS, theme=self.survey_theme) as survey:
+            _body_rows: list[gradio.components.base.Component] = []
             self.head = HeadPage(self.class_name + "教師滿意度調查問卷", self.survey_desc)
-            # with gr.Row(visible=True) as r1:
-            #     TeacherPage(self.teachers[0])
-            # with gr.Row(visible=False) as r2:
-            #     TeacherPage(self.teachers[2])
             for i, teacher in enumerate(self.teachers):
-                with gr.Row() as r:
-                    TeacherPage(teacher)
-                _body_rows[i] = r
-                _body_rows[i].visible = False
-            self.cur_body = 0
-            _body_rows[self.cur_body].visible = True
+                with gr.Row(visible=False) as r:
+                    _t = TeacherPage(teacher)
+                    self.body.append(_t)
+                _body_rows.append(r)
+            with gr.Row(visible=False) as emp_row:
+                _e = EmploymentPage()
+                self.body.append(_e)
+            with gr.Row(visible=False) as ta_row:
+                _ta = TAPage()
+                self.body.append(_ta)
+            _body_rows.append(emp_row)
+            _body_rows.append(ta_row)
+            set_cur_body(0, _body_rows)
 
             with gr.Row():
                 with gr.Column(min_width=0, scale=1):
                     pass
                 with gr.Column(variant="default", scale=3, min_width=640):
                     with gr.Row():
-                        prev_button = gr.Button("返回", min_width=75, scale=1)
+                        with gr.Row(visible=self.cur_body_index > 0) as prev_warp:
+                            prev_button = gr.Button("返回", min_width=75, scale=1)
                         with gr.Column(scale=10, min_width=0):
                             pass
-                        next_button = gr.Button("繼續", min_width=75, scale=1)
+                        with gr.Row(visible=(self.cur_body_index < len(_body_rows) - 1)) as next_warp:
+                            next_button = gr.Button("繼續", min_width=75, scale=1)
+                        with gr.Row(visible=(self.cur_body_index == len(_body_rows) - 1)) as send_warp:
+                            send_button = gr.Button("送出", min_width=75, scale=1, elem_id="sendButton")
 
                 with gr.Column(min_width=0, scale=1):
                     pass
 
             def next_body():
-                print(self.cur_body)
-                self.cur_body += 1
-                self.cur_body = min(self.cur_body, len(_body_rows) - 1)
-                return [_body_rows[self.cur_body-1].update(False), _body_rows[self.cur_body].update(True)]
-                # print(r1, r2)
-                # return r1.update(False), r2.update(True)
+                # print(1, args)
+                # print(2, self.body[self.cur_body_index].get_page_result(*args))
+                set_cur_body(self.cur_body_index + 1, _body_rows)
+                _result = []
+                for _r in _body_rows:
+                    if isinstance(_r, gr.Row):
+                        _result.append(_r.update(_r.visible))
+                _result.extend([prev_warp.update(self.cur_body_index > 0),
+                                next_warp.update((self.cur_body_index < len(
+                                    _body_rows) - 1)),
+                                send_warp.update((self.cur_body_index == len(
+                                    _body_rows) - 1))])
+                return _result
 
-            next_button.click(next_body, None, [_body_rows[int(max(0, self.cur_body-1))], _body_rows[self.cur_body]])
-            # next_button.click(next_body, None, [r1, r2])
+            def prev_body():
+                set_cur_body(self.cur_body_index - 1, _body_rows)
+                _result = []
+                for _r in _body_rows:
+                    if isinstance(_r, gr.Row):
+                        _result.append(_r.update(_r.visible))
+                _result.extend([prev_warp.update(self.cur_body_index > 0),
+                                next_warp.update((self.cur_body_index < len(
+                                    _body_rows) - 1)),
+                                send_warp.update((self.cur_body_index == len(
+                                    _body_rows) - 1))
+                                ])
+                return _result
+
+            btn_outputs = [_r for _r in _body_rows]
+            btn_outputs.extend([prev_warp, next_warp, send_warp])
+            btn_inputs = [_r for _r in self.body[0].get_input_components()]
+            # print(btn_inputs[0])
+            to_top_js = """
+                        function to_top() {
+                            window.scrollTo(0,0);
+                        }
+                        """
+            next_button.click(next_body, None,
+                              outputs=btn_outputs, js=to_top_js)
+            prev_button.click(prev_body, None,
+                              outputs=btn_outputs, js=to_top_js)
 
         return survey

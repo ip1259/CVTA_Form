@@ -24,3 +24,6 @@ class SuggestionBlock(InputBlock):
         if self.suggestion is not None:
             return self.suggestion.value
         return None
+
+    def get_input_components(self):
+        return [self.suggestion]

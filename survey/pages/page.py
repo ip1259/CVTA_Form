@@ -13,11 +13,13 @@ class Page:
     def _generate_page(self):
         pass
 
-    def get_page_result(self):
+    def get_page_result(self, *args):
         _results = []
-        for b in self.page_blocks:
+        _cursor = 0
+        for i, b in enumerate(self.page_blocks):
             if isinstance(b, InputBlock):
-                _results.append((type(b), b.must, b.get_result()))
+                _results.append((type(b), b.must, args[_cursor]))
+                _cursor += 1
         return _results
 
     def must_has_done(self):
@@ -27,3 +29,11 @@ class Page:
                 if r[1] and (r[2] is None):
                     return False
         return True
+
+    def get_input_components(self):
+        _result = []
+        for b in self.page_blocks:
+            if isinstance(b, InputBlock):
+                _result.extend(b.get_input_components())
+        # print(_result)
+        return _result
