@@ -1,14 +1,14 @@
-from survey.blocks.block import Block
+from survey.blocks.input_block import InputBlock
 import gradio as gr
 
 
-class SuggestionBlock(Block):
-    def __init__(self, title: str):
-        self.suggestion = None
-        super().__init__(title)
+class SuggestionBlock(InputBlock):
+    def __init__(self, title: str, must: bool = False):
+        self.suggestion: gr.TextArea | None = None
+        super().__init__(title, must)
 
     def _generate_body(self):
-        with gr.Blocks() as _block:
+        with gr.Column() as _col:
             with gr.Row():
                 with gr.Column(min_width=0, scale=1):
                     pass
@@ -18,4 +18,9 @@ class SuggestionBlock(Block):
 
                 with gr.Column(min_width=0, scale=1):
                     pass
-        self.body = _block
+        self.body = _col
+
+    def get_result(self):
+        if self.suggestion is not None:
+            return self.suggestion.value
+        return None

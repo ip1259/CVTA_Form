@@ -1,6 +1,7 @@
 from survey.pages.page import Page
 from survey.blocks.score_block import ScoreBlock
 from survey.blocks.suggestion_block import SuggestionBlock
+import gradio as gr
 
 
 class TeacherPage(Page):
@@ -12,14 +13,22 @@ class TeacherPage(Page):
 
     def __init__(self, _teacher: str, max_score: int = 5):
         super().__init__()
-        self.page_blocks.append(ScoreBlock(TeacherPage.Q1.format(_teacher), max_score))
-        self.page_blocks.append(ScoreBlock(TeacherPage.Q2.format(_teacher), max_score))
-        self.page_blocks.append(ScoreBlock(TeacherPage.Q3.format(_teacher), max_score))
-        self.page_blocks.append(ScoreBlock(TeacherPage.Q4.format(_teacher), max_score))
-        self.page_blocks.append(SuggestionBlock(TeacherPage.Q5.format(_teacher)))
-        super()._generate_page()
+        self._teacher = _teacher
+        self._max_score = max_score
+        self._generate_page()
+
+    def _generate_page(self):
+        with gr.Row() as _row:
+            with gr.Column():
+                self.page_blocks.append(ScoreBlock(TeacherPage.Q1.format(self._teacher)))
+                self.page_blocks.append(ScoreBlock(TeacherPage.Q2.format(self._teacher)))
+                self.page_blocks.append(ScoreBlock(TeacherPage.Q3.format(self._teacher)))
+                self.page_blocks.append(ScoreBlock(TeacherPage.Q4.format(self._teacher)))
+                self.page_blocks.append(SuggestionBlock(TeacherPage.Q5.format(self._teacher)))
+        self.page = _row
 
 
 if __name__ == '__main__':
-    teacher = TeacherPage("簡進士")
-    teacher.page.launch()
+    with gr.Blocks() as demo:
+        teacher = TeacherPage("簡進士")
+    demo.launch()

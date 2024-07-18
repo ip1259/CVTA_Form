@@ -1,6 +1,7 @@
 from survey.pages.page import Page
 from survey.blocks.score_block import ScoreBlock
 from survey.blocks.suggestion_block import SuggestionBlock
+import gradio as gr
 
 
 class TAPage(Page):
@@ -10,12 +11,18 @@ class TAPage(Page):
 
     def __init__(self):
         super().__init__()
-        self.page_blocks.append(ScoreBlock(TAPage.Q1))
-        self.page_blocks.append(ScoreBlock(TAPage.Q2))
-        self.page_blocks.append(SuggestionBlock(TAPage.Q3))
-        super()._generate_page()
+        self._generate_page()
+
+    def _generate_page(self):
+        with gr.Row() as _row:
+            with gr.Column():
+                self.page_blocks.append(ScoreBlock(TAPage.Q1))
+                self.page_blocks.append(ScoreBlock(TAPage.Q2))
+                self.page_blocks.append(SuggestionBlock(TAPage.Q3))
+        self.page = _row
 
 
 if __name__ == '__main__':
-    ta = TAPage()
-    ta.page.launch()
+    with gr.Blocks() as demo:
+        ta = TAPage()
+    demo.launch()

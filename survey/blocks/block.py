@@ -3,7 +3,7 @@ import gradio as gr
 
 class Block:
     def __init__(self, title: str):
-        self.body: gr.Blocks | None = None
+        self.body: gr.Column | None = None
         self._title = title
         self._generate_body()
 

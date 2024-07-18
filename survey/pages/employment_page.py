@@ -1,5 +1,6 @@
 from survey.blocks.score_block import ScoreBlock
 from survey.pages.page import Page
+import gradio as gr
 
 
 class EmploymentPage(Page):
@@ -10,13 +11,20 @@ class EmploymentPage(Page):
 
     def __init__(self):
         super().__init__()
-        self.page_blocks.append(ScoreBlock(EmploymentPage.Q1, min_score_desc="非常不符合", max_score_desc="非常符合"))
-        self.page_blocks.append(ScoreBlock(EmploymentPage.Q2))
-        self.page_blocks.append(ScoreBlock(EmploymentPage.Q3))
-        self.page_blocks.append(ScoreBlock(EmploymentPage.Q4, min_score_desc="非常不足", max_score_desc="非常充足"))
-        super()._generate_page()
+        self._generate_page()
+
+    def _generate_page(self):
+        with gr.Row() as _row:
+            with gr.Column():
+                self.page_blocks.append(
+                    ScoreBlock(EmploymentPage.Q1, min_score_desc="非常不符合", max_score_desc="非常符合"))
+                self.page_blocks.append(ScoreBlock(EmploymentPage.Q2))
+                self.page_blocks.append(ScoreBlock(EmploymentPage.Q3))
+                self.page_blocks.append(ScoreBlock(EmploymentPage.Q4, min_score_desc="非常不足", max_score_desc="非常充足"))
+        self.page = _row
 
 
 if __name__ == '__main__':
-    em = EmploymentPage()
-    em.page.launch()
+    with gr.Blocks() as demo:
+        em = EmploymentPage()
+    demo.launch()

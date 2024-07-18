@@ -8,7 +8,7 @@ class HeadBlock(Block):
         super().__init__(title)
 
     def _generate_body(self):
-        with gr.Blocks() as _block:
+        with gr.Column() as _col:
             with gr.Row():
                 with gr.Column(min_width=0, scale=1):
                     pass
@@ -17,7 +17,7 @@ class HeadBlock(Block):
                     gr.Markdown(self._desc)
                 with gr.Column(min_width=0, scale=1):
                     pass
-        self.body = _block
+        self.body = _col
 
 
 if __name__ == '__main__':
