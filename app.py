@@ -10,6 +10,6 @@ survey = {'class_name': "113F01_AIOT物聯網智慧應用設計班",
 
 if __name__ == '__main__':
     # logging.basicConfig(level=logging.DEBUG)
-    _survey = Survey(survey['class_name'], survey['teachers'], survey['survey_desc'])
+    _survey = Survey(survey['class_name'], survey['teachers'])
     app = _survey.start_survey()
     app.launch()

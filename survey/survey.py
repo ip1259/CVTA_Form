@@ -8,7 +8,7 @@ from survey.themes.themes import *
 
 class Survey:
     def __init__(self, class_name: str, teachers: list[str],
-                 survey_desc: str = "本問卷用以了解學生對於師資滿意度進行調查，以匿名方式提供老師日後教學上的參考，請放心填寫。",
+                 survey_desc: str = "本問卷用以了解學生對於師資滿意度進行調查，以匿名方式提供老師日後教學上的參考，請放心填寫。\n*代表必填",
                  survey_theme: Base = SurveyTheme.EMB):
         self.survey_theme = survey_theme
         self.survey_desc = survey_desc
@@ -66,10 +66,8 @@ class Survey:
                     pass
 
             def next_body():
-                # print(1, args)
-                print(2, [c for c in self.body[self.cur_body_index].get_page_result()])
-                print(3, self.body[self.cur_body_index].must_has_done())
-                set_cur_body(self.cur_body_index + 1, _body_rows)
+                if self.body[self.cur_body_index].must_has_done():
+                    set_cur_body(self.cur_body_index + 1, _body_rows)
                 _result = []
                 for _r in _body_rows:
                     if isinstance(_r, gr.Row):

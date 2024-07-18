@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="完成換頁功能，讀取使用者輸入功能失敗">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/blocks/input_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/input_block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/blocks/score_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/score_block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/blocks/suggestion_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/suggestion_block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/page.py" afterDir="false" />
+    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="修正InputBlock的子類別，在block中新增radio.change的方關解決方案，解決無法讀取使用者輸入問題">
+      <change beforePath="$PROJECT_DIR$/survey/pages/employment_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/employment_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/pages/ta_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/ta_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/pages/teacher_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/teacher_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey/survey.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/survey.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,12 +192,21 @@
       <option name="project" value="LOCAL" />
       <updated>1721290374190</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修正InputBlock的子類別，在block中新增radio.change的方關解決方案，解決無法讀取使用者輸入問題">
+      <option name="closed" value="true" />
+      <created>1721292714477</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1721292714477</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完成換頁功能，讀取使用者輸入功能失敗" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成換頁功能，讀取使用者輸入功能失敗" />
+    <MESSAGE value="修正InputBlock的子類別，在block中新增radio.change的方關解決方案，解決無法讀取使用者輸入問題" />
+    <option name="LAST_COMMIT_MESSAGE" value="修正InputBlock的子類別，在block中新增radio.change的方關解決方案，解決無法讀取使用者輸入問題" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
