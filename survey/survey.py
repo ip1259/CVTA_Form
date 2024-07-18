@@ -25,18 +25,17 @@ class Survey:
         self.class_name = class_name
         self.head: Page | None = None
         self.body: list[Page] | None = []
-        self.cur_body_index: int = -1
         self.clients: dict[str, SurveyClient] = {}
         self.response: dict[str, SurveyResponse] | None = {}
 
     def start_survey(self):
-        def set_cur_body(index: int, _br: list[gradio.components.base.Component]):
-            self.cur_body_index = index
-            self.cur_body_index = min(self.cur_body_index, len(_br) - 1)
-            self.cur_body_index = max(self.cur_body_index, 0)
+        def set_cur_body(index: int, _br: list[gradio.components.base.Component], ip: str):
+            self.clients[ip].cur_body_index = index
+            self.clients[ip].cur_body_index = min(self.clients[ip].cur_body_index, len(_br) - 1)
+            self.clients[ip].cur_body_index = max(self.clients[ip].cur_body_index, 0)
             for _i, _r in enumerate(_br):
                 if isinstance(_r, gr.Row):
-                    if _i == self.cur_body_index:
+                    if _i == self.clients[ip].cur_body_index:
                         _r.visible = True
                     else:
                         _r.visible = False
@@ -49,6 +48,8 @@ class Survey:
                     _t = TeacherPage(teacher, self)
                     self.body.append(_t)
                 _body_rows.append(r)
+                if i == 0:
+                    r.visible = True
             with gr.Row(visible=False) as emp_row:
                 _e = EmploymentPage(self)
                 self.body.append(_e)
@@ -59,52 +60,54 @@ class Survey:
                     self.body.append(_ta)
                     _body_rows.append(ta_row)
 
-            set_cur_body(0, _body_rows)
-
             with gr.Row():
                 with gr.Column(min_width=0, scale=1):
                     pass
                 with gr.Column(variant="default", scale=3, min_width=640):
                     with gr.Row():
-                        with gr.Row(visible=self.cur_body_index > 0) as prev_warp:
+                        with gr.Row(visible=False) as prev_warp:
                             prev_button = gr.Button("返回", min_width=75, scale=1)
                         with gr.Column(scale=10, min_width=0):
                             pass
-                        with gr.Row(visible=(self.cur_body_index < len(_body_rows) - 1)) as next_warp:
+                        with gr.Row(visible=True) as next_warp:
                             next_button = gr.Button("繼續", min_width=75, scale=1)
-                        with gr.Row(visible=(self.cur_body_index == len(_body_rows) - 1)) as send_warp:
+                        with gr.Row(visible=False) as send_warp:
                             send_button = gr.Button("送出", min_width=75, scale=1, elem_id="sendButton")
 
                 with gr.Column(min_width=0, scale=1):
                     pass
 
             def next_body(request: gr.Request):
-                if request:
-                    if self.body[self.cur_body_index].must_has_done(request.request.client.host):
-                        set_cur_body(self.cur_body_index + 1, _body_rows)
+                _ip = request.client.host
+                _cur = self.clients[_ip].cur_body_index
+                if self.body[_cur].must_has_done(_ip):
+                    self.clients[_ip].set_cur_body(_cur+1, _body_rows)
+                _cur = self.clients[_ip].cur_body_index
                 _result = []
                 for _r in _body_rows:
                     if isinstance(_r, gr.Row):
                         _result.append(_r.update(_r.visible))
-                _result.extend([prev_warp.update(self.cur_body_index > 0),
-                                next_warp.update((self.cur_body_index < len(
+                _result.extend([prev_warp.update(_cur > 0),
+                                next_warp.update((_cur < len(
                                     _body_rows) - 1)),
-                                send_warp.update((self.cur_body_index == len(
+                                send_warp.update((_cur == len(
                                     _body_rows) - 1))])
                 return _result
 
-            def prev_body():
-                set_cur_body(self.cur_body_index - 1, _body_rows)
+            def prev_body(request: gr.Request):
+                _ip = request.client.host
+                _cur = self.clients[_ip].cur_body_index
+                self.clients[_ip].set_cur_body(_cur-1, _body_rows)
+                _cur = self.clients[_ip].cur_body_index
                 _result = []
                 for _r in _body_rows:
                     if isinstance(_r, gr.Row):
                         _result.append(_r.update(_r.visible))
-                _result.extend([prev_warp.update(self.cur_body_index > 0),
-                                next_warp.update((self.cur_body_index < len(
+                _result.extend([prev_warp.update(_cur > 0),
+                                next_warp.update((_cur < len(
                                     _body_rows) - 1)),
-                                send_warp.update((self.cur_body_index == len(
-                                    _body_rows) - 1))
-                                ])
+                                send_warp.update((_cur == len(
+                                    _body_rows) - 1))])
                 return _result
 
             def send_click(request: gr.Request):
@@ -166,7 +169,7 @@ class SurveyClient:
         self.ip = ip
         self.parent = parent
         self.response = SurveyResponse(parent)
-        self.cur_body_index: int = -1
+        self.cur_body_index: int = 0
 
     def save_response(self):
         _path = os.getcwd()
@@ -193,3 +196,14 @@ class SurveyClient:
         _ws = _wb["表單回覆"]
         _ws.append(_response)
         _wb.save(_path)
+
+    def set_cur_body(self, index: int, _br: list[gradio.components.base.Component]):
+        self.cur_body_index = index
+        self.cur_body_index = min(self.cur_body_index, len(_br) - 1)
+        self.cur_body_index = max(self.cur_body_index, 0)
+        for _i, _r in enumerate(_br):
+            if isinstance(_r, gr.Row):
+                if _i == self.cur_body_index:
+                    _r.visible = True
+                else:
+                    _r.visible = False

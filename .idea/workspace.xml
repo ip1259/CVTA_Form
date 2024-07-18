@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="">
+    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="分離 各Client的儲存物件&#10;self.cur_body_index未完成">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/blocks/block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/blocks/head_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/head_block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/blocks/input_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/input_block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/blocks/score_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/score_block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/blocks/suggestion_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/suggestion_block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/employment_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/employment_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/head_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/head_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/ta_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/ta_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/teacher_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/teacher_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey/survey.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/survey.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -195,6 +183,19 @@
       <option name="presentableId" value="Default" />
       <updated>1721181035871</updated>
     </task>
+    <task id="LOCAL-00001" summary="分離 各Client的儲存物件&#10;self.cur_body_index未完成">
+      <option name="closed" value="true" />
+      <created>1721323289068</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1721323289068</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="分離 各Client的儲存物件&#10;self.cur_body_index未完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="分離 各Client的儲存物件&#10;self.cur_body_index未完成" />
   </component>
 </project>
