@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="分離 各Client的儲存物件&#10;self.cur_body_index未完成">
+      <change afterPath="$PROJECT_DIR$/survey/blocks/finish_block.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/survey/manager/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/survey/pages/finish_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/pages/pages.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/pages.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey/survey.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/survey.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,20 +37,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.employment_page.executor&quot;: &quot;Run&quot;,
-    &quot;Python.head_block.executor&quot;: &quot;Run&quot;,
-    &quot;Python.head_page.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ta_page.executor&quot;: &quot;Run&quot;,
-    &quot;Python.teacher_page.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Data/Program_Project/Python/CVTA_Form&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.app.executor": "Run",
+    "Python.employment_page.executor": "Run",
+    "Python.head_block.executor": "Run",
+    "Python.head_page.executor": "Run",
+    "Python.ta_page.executor": "Run",
+    "Python.teacher_page.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "F:/ProgramData/python/CVTA_Form/survey/pages"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\ProgramData\python\CVTA_Form\survey\pages" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CVTA_Form" />

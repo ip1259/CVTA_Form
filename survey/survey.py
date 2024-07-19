@@ -25,22 +25,12 @@ class Survey:
         self.class_name = class_name
         self.head: Page | None = None
         self.body: list[Page] | None = []
+        self.body_rows: list[gradio.components.base.Component] = []
         self.clients: dict[str, SurveyClient] = {}
         self.response: dict[str, SurveyResponse] | None = {}
 
     def start_survey(self):
-        def set_cur_body(index: int, _br: list[gradio.components.base.Component], ip: str):
-            self.clients[ip].cur_body_index = index
-            self.clients[ip].cur_body_index = min(self.clients[ip].cur_body_index, len(_br) - 1)
-            self.clients[ip].cur_body_index = max(self.clients[ip].cur_body_index, 0)
-            for _i, _r in enumerate(_br):
-                if isinstance(_r, gr.Row):
-                    if _i == self.clients[ip].cur_body_index:
-                        _r.visible = True
-                    else:
-                        _r.visible = False
-
-        with gr.Blocks(js=SurveyTheme.JS, css=SurveyTheme.EMB_CSS, theme=self.survey_theme) as survey:
+        with gr.Blocks(js=SurveyTheme.JS, css=SurveyTheme.EMB_CSS, theme=self.survey_theme) as _survey:
             _body_rows: list[gradio.components.base.Component] = []
             self.head = HeadPage(self.class_name + "教師滿意度調查問卷", self.survey_desc, self)
             for i, teacher in enumerate(self.teachers):
@@ -60,6 +50,13 @@ class Survey:
                     self.body.append(_ta)
                     _body_rows.append(ta_row)
 
+            _fin = FinishPage(self)
+            _fin.page.visible = False
+            self.body.append(_fin)
+            _body_rows.append(_fin.page)
+
+            self.body_rows = _body_rows
+
             with gr.Row():
                 with gr.Column(min_width=0, scale=1):
                     pass
@@ -78,43 +75,66 @@ class Survey:
                     pass
 
             def next_body(request: gr.Request):
-                _ip = request.client.host
-                _cur = self.clients[_ip].cur_body_index
-                if self.body[_cur].must_has_done(_ip):
-                    self.clients[_ip].set_cur_body(_cur+1, _body_rows)
-                _cur = self.clients[_ip].cur_body_index
-                _result = []
-                for _r in _body_rows:
-                    if isinstance(_r, gr.Row):
-                        _result.append(_r.update(_r.visible))
-                _result.extend([prev_warp.update(_cur > 0),
-                                next_warp.update((_cur < len(
-                                    _body_rows) - 1)),
-                                send_warp.update((_cur == len(
-                                    _body_rows) - 1))])
-                return _result
+                if request:
+                    _ip = request.client.host
+                    _cur = self.clients[_ip].cur_body_index
+                    if self.body[_cur].must_has_done(_ip):
+                        self.clients[_ip].set_cur_body(_cur + 1)
+                    _cur = self.clients[_ip].cur_body_index
+                    _result = []
+                    for _i, _r in enumerate(_body_rows):
+                        if isinstance(_r, gr.Row):
+                            _result.append(_r.update(self.clients[_ip].body_visible_states[_i]))
+                    _result.extend([prev_warp.update(_cur > 0 and _cur != len(
+                        _body_rows) - 1),
+                                    next_warp.update((_cur < len(
+                                        _body_rows) - 2)),
+                                    send_warp.update((_cur == len(
+                                        _body_rows) - 2))])
+                    return _result
+                return None
 
             def prev_body(request: gr.Request):
-                _ip = request.client.host
-                _cur = self.clients[_ip].cur_body_index
-                self.clients[_ip].set_cur_body(_cur-1, _body_rows)
-                _cur = self.clients[_ip].cur_body_index
-                _result = []
-                for _r in _body_rows:
-                    if isinstance(_r, gr.Row):
-                        _result.append(_r.update(_r.visible))
-                _result.extend([prev_warp.update(_cur > 0),
-                                next_warp.update((_cur < len(
-                                    _body_rows) - 1)),
-                                send_warp.update((_cur == len(
-                                    _body_rows) - 1))])
-                return _result
+                if request:
+                    _ip = request.client.host
+                    _cur = self.clients[_ip].cur_body_index
+                    self.clients[_ip].set_cur_body(_cur - 1)
+                    _cur = self.clients[_ip].cur_body_index
+                    _result = []
+                    for _i, _r in enumerate(_body_rows):
+                        if isinstance(_r, gr.Row):
+                            _result.append(_r.update(self.clients[_ip].body_visible_states[_i]))
+                    _result.extend([prev_warp.update(_cur > 0 and _cur != len(
+                        _body_rows) - 1),
+                                    next_warp.update((_cur < len(
+                                        _body_rows) - 2)),
+                                    send_warp.update((_cur == len(
+                                        _body_rows) - 2))])
+                    return _result
+                return None
 
             def send_click(request: gr.Request):
                 if request:
                     _ip = request.request.client.host
                     print(self.clients[_ip].response)
                     self.clients[_ip].save_response()
+
+                    _cur = self.clients[_ip].cur_body_index
+                    if self.body[_cur].must_has_done(_ip):
+                        self.clients[_ip].set_cur_body(_cur + 1)
+                    _cur = self.clients[_ip].cur_body_index
+                    _result = []
+                    for _i, _r in enumerate(_body_rows):
+                        if isinstance(_r, gr.Row):
+                            _result.append(_r.update(self.clients[_ip].body_visible_states[_i]))
+                    _result.extend([prev_warp.update(_cur > 0 and _cur != len(
+                        _body_rows) - 1),
+                                    next_warp.update((_cur < len(
+                                        _body_rows) - 2)),
+                                    send_warp.update((_cur == len(
+                                        _body_rows) - 2))])
+                    return _result
+                return None
 
             btn_outputs = [_r for _r in _body_rows]
             btn_outputs.extend([prev_warp, next_warp, send_warp])
@@ -127,7 +147,8 @@ class Survey:
                               outputs=btn_outputs, js=to_top_js)
             prev_button.click(prev_body, None,
                               outputs=btn_outputs, js=to_top_js)
-            send_button.click(send_click)
+            send_button.click(send_click, None,
+                              outputs=btn_outputs, js=to_top_js)
 
             def survey_load(request: gr.Request):
                 _ip = request.request.client.host
@@ -137,9 +158,9 @@ class Survey:
                 _ip = request.request.client.host
                 self.clients.pop(_ip)
 
-            survey.load(survey_load)
-            survey.unload(survey_unload)
-        return survey
+            _survey.load(survey_load)
+            _survey.unload(survey_unload)
+        return _survey
 
     def get_survey_input_components(self):
         _results = []
@@ -170,40 +191,47 @@ class SurveyClient:
         self.parent = parent
         self.response = SurveyResponse(parent)
         self.cur_body_index: int = 0
+        self.body_visible_states: list[bool] = [r.visible for r in self.parent.body_rows]
 
     def save_response(self):
         _path = os.getcwd()
         _path = os.path.join(_path, "responses")
         if not os.path.exists(_path):
             os.mkdir(_path)
-        _wb = None
-        _path = os.path.join(_path, self.parent.survey_id + ".xlsx")
+        _path = os.path.join(_path, self.parent.survey_id)
         if not os.path.exists(_path):
-            _wb = openpyxl.Workbook()
-            _wb.create_sheet("表單回覆")
-            _wb.remove_sheet(_wb["Sheet"])
-            _ws = _wb["表單回覆"]
-            _titles = ["IP"]
-            _titles.extend([_t[0] for _t in self.response.response.values()])
-            _ws.append(_titles)
-            _wb.save(_path)
-        _wb = openpyxl.load_workbook(_path)
-        _response = [self.ip]
-        _response.extend([_t[2] for _t in self.response.response.values()])
-        for r in _response:
-            if r is None:
-                r = ""
-        _ws = _wb["表單回覆"]
-        _ws.append(_response)
-        _wb.save(_path)
+            os.mkdir(_path)
+        from joblib import dump, load
+        dump([i for i in self.response.response.values()], os.path.join(_path, self.ip.split('.')[-1]+".rep"))
+        # example: list[tuple[str, bool, str | int | float]] = load("[WorkDir]/responses/[SurveyID]/[IPv4最後一位.rep]")
+        #
+        # _wb = None
+        # _path = os.path.join(_path, self.parent.survey_id + ".xlsx")
+        # if not os.path.exists(_path):
+        #     _wb = openpyxl.Workbook()
+        #     _wb.create_sheet("表單回覆")
+        #     _wb.remove_sheet(_wb["Sheet"])
+        #     _ws = _wb["表單回覆"]
+        #     _titles = ["IP"]
+        #     _titles.extend([_t[0] for _t in self.response.response.values()])
+        #     _ws.append(_titles)
+        #     _wb.save(_path)
+        # _wb = openpyxl.load_workbook(_path)
+        # _response = [self.ip]
+        # _response.extend([_t[2] for _t in self.response.response.values()])
+        # for i, r in enumerate(_response):
+        #     if r is None:
+        #         _response[i] = ""
+        # _ws = _wb["表單回覆"]
+        # _ws.append(_response)
+        # _wb.save(_path)
 
-    def set_cur_body(self, index: int, _br: list[gradio.components.base.Component]):
+    def set_cur_body(self, index: int):
         self.cur_body_index = index
-        self.cur_body_index = min(self.cur_body_index, len(_br) - 1)
+        self.cur_body_index = min(self.cur_body_index, len(self.body_visible_states) - 1)
         self.cur_body_index = max(self.cur_body_index, 0)
-        for _i, _r in enumerate(_br):
-            if isinstance(_r, gr.Row):
-                if _i == self.cur_body_index:
-                    _r.visible = True
-                else:
-                    _r.visible = False
+        for _i in range(len(self.body_visible_states)):
+            if _i == self.cur_body_index:
+                self.body_visible_states[_i] = True
+            else:
+                self.body_visible_states[_i] = False
