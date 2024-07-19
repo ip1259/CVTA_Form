@@ -3,11 +3,13 @@ import survey.pages.page as sPage
 import survey.pages.pages as sPages
 import gradio as gr
 
+import survey.themes.themes as sThemes
+
 
 class Survey:
     def __init__(self):
         self.survey_id: str = ""
-        self.survey_theme: grBase | None = None
+        self.survey_theme: (grBase, str) = None
         self.heads: list[sPage.Page] = []
         self.bodies: list[sPage.Page] = []
         self.tail: sPage.Page = sPage.Page(self)
@@ -25,6 +27,13 @@ class Survey:
         return _results
 
     def set_survey(self, file_path: str):
+        """
+        透過描述問卷的json檔案設定Survey物件
+        Survey File Structure:
+
+        :param file_path:
+        :return: None
+        """
         pass
 
     def generate_survey(self):
@@ -45,3 +54,4 @@ def get_page_type(ptype: str):
 def get_theme(theme: str):
     match theme:
         case "EMB":
+            return sThemes.SurveyTheme.EMB

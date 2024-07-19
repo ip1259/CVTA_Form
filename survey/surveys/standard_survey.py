@@ -14,7 +14,7 @@ class StandardSurvey:
                  survey_id: str,
                  has_ta: bool,
                  survey_desc: str = "本問卷用以了解學生對於師資滿意度進行調查，以匿名方式提供老師日後教學上的參考，請放心填寫。\n*代表必填",
-                 survey_theme: Base = SurveyTheme.EMB_THEME):
+                 survey_theme: (Base, str) = SurveyTheme.EMB_THEME):
         self.has_ta = has_ta
         self.survey_id = survey_id
         self.survey_theme = survey_theme
@@ -28,7 +28,7 @@ class StandardSurvey:
         # self.response: dict[str, SurveyResponse] | None = {}
 
     def start_survey(self):
-        with gr.Blocks(js=SurveyTheme.JS, css=SurveyTheme.EMB_CSS, theme=self.survey_theme) as _survey:
+        with gr.Blocks(js=SurveyTheme.JS, css=self.survey_theme[1], theme=self.survey_theme[0]) as _survey:
             _body_rows: list[gradio.components.base.Component] = []
             self.head = HeadPage(self.class_name + "教師滿意度調查問卷", self.survey_desc, self)
             for i, teacher in enumerate(self.teachers):

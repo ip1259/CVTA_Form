@@ -1,5 +1,5 @@
 import survey.surveys.survey as sr
-import survey.blocks.input_block as inBlock
+import survey.blocksV2.input_block as input_block
 import os
 
 
@@ -59,7 +59,7 @@ class SurveyResponse:
     def __init__(self, parent: sr.Survey):
         self.parent = parent
         # example self.response[an InputBlock Object as KEY] = (Question, Must Answer Or Not, Value)
-        self.response: dict[inBlock.InputBlock, tuple[str, bool, str | int | float]] = {}
+        self.response: dict[input_block.InputBlock, tuple[str, bool, str | int | float]] = {}
         self.init_response()
 
     def init_response(self):
@@ -67,5 +67,5 @@ class SurveyResponse:
         for i in _inputs:
             self.set_response(i, None)
 
-    def set_response(self, input_block: inBlock.InputBlock, value):
-        self.response[input_block] = (input_block.title, input_block.must, value)
+    def set_response(self, block: input_block.InputBlock, value):
+        self.response[block] = (block.title, block.must, value)

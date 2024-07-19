@@ -7,6 +7,7 @@ class SurveyServer:
         """
 
         """
+        # clients: 儲存用戶端資料為dict型別,key值為一tuple，(Survey, ip-address-string)
         self.clients: dict[(sr.Survey, str), sc.SurveyClient] = {}
         self.survey: list[sr.Survey] = []
 
