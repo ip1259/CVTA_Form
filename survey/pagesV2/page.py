@@ -6,8 +6,9 @@ from survey.network import survey_server as server
 
 
 class Page:
-    def __init__(self, parent):
-        self.parent = parent
+    def __init__(self, parent_server: server.SurveyServer, parent_survey: survey.Survey):
+        self.parent = parent_survey
+        self.server = parent_server
         self.page_blocks: list[block.Block] = []
         self.page: gr.Row | None = None
 
@@ -16,11 +17,9 @@ class Page:
 
     def get_page_result(self, ip: str):
         _results = []
-        _cursor = 0
-        for i, b in enumerate(self.page_blocks):
+        for b in self.page_blocks:
             if isinstance(b, input_block.InputBlock):
                 _results.append((type(b), b.must, b.get_result(ip)))
-                _cursor += 1
         return _results
 
     def must_has_done(self, ip: str):
