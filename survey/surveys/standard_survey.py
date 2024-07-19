@@ -8,15 +8,13 @@ from survey.pages.page import Page
 from survey.pages.pages import *
 from survey.themes.themes import *
 
-import openpyxl
 
-
-class Survey:
+class StandardSurvey:
     def __init__(self, class_name: str, teachers: list[str],
                  survey_id: str,
                  has_ta: bool,
                  survey_desc: str = "本問卷用以了解學生對於師資滿意度進行調查，以匿名方式提供老師日後教學上的參考，請放心填寫。\n*代表必填",
-                 survey_theme: Base = SurveyTheme.EMB):
+                 survey_theme: Base = SurveyTheme.EMB_THEME):
         self.has_ta = has_ta
         self.survey_id = survey_id
         self.survey_theme = survey_theme
@@ -27,7 +25,7 @@ class Survey:
         self.body: list[Page] | None = []
         self.body_rows: list[gradio.components.base.Component] = []
         self.clients: dict[str, SurveyClient] = {}
-        self.response: dict[str, SurveyResponse] | None = {}
+        # self.response: dict[str, SurveyResponse] | None = {}
 
     def start_survey(self):
         with gr.Blocks(js=SurveyTheme.JS, css=SurveyTheme.EMB_CSS, theme=self.survey_theme) as _survey:
@@ -170,7 +168,7 @@ class Survey:
 
 
 class SurveyResponse:
-    def __init__(self, parent: Survey):
+    def __init__(self, parent: StandardSurvey):
         self.parent = parent
         # example self.response[an InputBlock Object as KEY] = (Question, Must Answer Or Not, Value)
         self.response: dict[survey.blocks.input_block.InputBlock, tuple[str, bool, str | int | float]] = {}
@@ -186,7 +184,7 @@ class SurveyResponse:
 
 
 class SurveyClient:
-    def __init__(self, ip: str, parent: Survey):
+    def __init__(self, ip: str, parent: StandardSurvey):
         self.ip = ip
         self.parent = parent
         self.response = SurveyResponse(parent)
@@ -201,7 +199,7 @@ class SurveyClient:
         _path = os.path.join(_path, self.parent.survey_id)
         if not os.path.exists(_path):
             os.mkdir(_path)
-        from joblib import dump, load
+        from joblib import dump
         dump([i for i in self.response.response.values()], os.path.join(_path, self.ip.split('.')[-1]+".rep"))
         # example: list[tuple[str, bool, str | int | float]] = load("[WorkDir]/responses/[SurveyID]/[IPv4最後一位.rep]")
         #

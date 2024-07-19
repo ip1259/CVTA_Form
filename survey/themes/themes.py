@@ -17,7 +17,7 @@ class SurveyTheme:
                 #sendButton:hover {background-color: #02F78E}
     """
 
-    EMB = gr.themes.Soft(
+    EMB_THEME = gr.themes.Soft(
         primary_hue="emerald",
         neutral_hue="sky",
         text_size="lg",
@@ -28,3 +28,4 @@ class SurveyTheme:
         block_background_fill='*primary_50',
         block_border_width='2px'
     )
+    EMB = (EMB_THEME, EMB_CSS)
