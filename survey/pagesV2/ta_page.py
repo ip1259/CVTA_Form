@@ -1,6 +1,4 @@
 from survey.pagesV2 import custom_page
-from survey.network import survey_server as server
-from survey.surveys import survey
 
 
 class TAPage(custom_page.CustomPage):
@@ -9,8 +7,8 @@ class TAPage(custom_page.CustomPage):
     Q3 = "3.對助教的建議或想說的話? 非必填"
 
     def __init__(self,
-                 parent_server: server.SurveyServer,
-                 parent_survey: survey.Survey,
+                 parent_server,
+                 parent_survey,
                  max_score: int = 5):
         self._max_score = max_score
         self._BLOCK_DICTS: list[dict] = [{

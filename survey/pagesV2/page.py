@@ -1,12 +1,10 @@
 import gradio as gr
 
 from survey.blocksV2 import block, input_block
-from survey.surveys import survey
-from survey.network import survey_server as server
 
 
 class Page:
-    def __init__(self, parent_server: server.SurveyServer, parent_survey: survey.Survey):
+    def __init__(self, parent_server, parent_survey):
         self.parent = parent_survey
         self.server = parent_server
         self.page_blocks: list[block.Block] = []

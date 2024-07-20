@@ -1,10 +1,9 @@
 import gradio as gr
 from survey.blocksV2.block import Block
-from survey.surveys import survey
 
 
 class HeadBlock(Block):
-    def __init__(self, title: str, desc: str, parent_survey: survey.Survey):
+    def __init__(self, title: str, desc: str, parent_survey):
         self._desc = desc
         super().__init__(title, parent_survey)
         self._generate_body()

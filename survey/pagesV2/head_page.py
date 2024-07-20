@@ -1,14 +1,11 @@
 from survey.pagesV2 import custom_page
-from survey.network import survey_server as server
-from survey.surveys import survey
 
 
 class HeadPage(custom_page.CustomPage):
     DEFAULT_DESC = "本問卷用以了解學生對於師資滿意度進行調查，以匿名方式提供老師日後教學上的參考，請放心填寫。\n*代表必填"
 
     def __init__(self, title: str,
-                 parent_server: server.SurveyServer,
-                 parent_survey: survey.Survey,
+                 parent_server, parent_survey,
                  desc: str = DEFAULT_DESC):
         self._title = title
         self._desc = desc

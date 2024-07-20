@@ -1,16 +1,12 @@
-from __future__ import annotations
-from typing import TYPE_CHECKING
 import os
-if TYPE_CHECKING:
-    import survey.surveys.survey as sr
-    import survey.blocksV2.input_block as input_block
+import survey.blocksV2.input_block as input_block
 
 
 class SurveyClient:
-    def __init__(self, ip: str, parent: sr.Survey):
+    def __init__(self, ip: str, parent_survey):
         self.ip = ip
-        self.parent = parent
-        self.response = SurveyResponse(parent)
+        self.parent = parent_survey
+        self.response = SurveyResponse(parent_survey)
         self.cur_body_index: int = 0
         self.body_visible_states: list[bool] = [r.visible for r in self.parent.get_rows_in_bodies()]
 
@@ -23,7 +19,7 @@ class SurveyClient:
         if not os.path.exists(_path):
             os.mkdir(_path)
         from joblib import dump
-        dump([i for i in self.response.response.values()], os.path.join(_path, self.ip.split('.')[-1]+".rep"))
+        dump([i for i in self.response.response.values()], os.path.join(_path, self.ip.split('.')[-1] + ".rep"))
         # example: list[tuple[str, bool, str | int | float]] = load("[WorkDir]/responses/[SurveyID]/[IPv4最後一位.rep]")
         #
         # _wb = None
@@ -59,8 +55,8 @@ class SurveyClient:
 
 
 class SurveyResponse:
-    def __init__(self, parent: sr.Survey):
-        self.parent = parent
+    def __init__(self, parent_survey):
+        self.parent = parent_survey
         # example self.response[an InputBlock Object as KEY] = (Question, Must Answer Or Not, Value)
         self.response: dict[input_block.InputBlock, tuple[str, bool, str | int | float]] = {}
         self.init_response()

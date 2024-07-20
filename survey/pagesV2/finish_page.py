@@ -1,12 +1,8 @@
 from survey.pagesV2 import custom_page
-from survey.network import survey_server as server
-from survey.surveys import survey
 
 
 class FinishPage(custom_page.CustomPage):
-    def __init__(self,
-                 parent_server: server.SurveyServer,
-                 parent_survey: survey.Survey):
+    def __init__(self, parent_server, parent_survey):
         _BLOCK_DICTS: list[dict] = [{
             'block_type': "finish"
         }]

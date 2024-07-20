@@ -1,6 +1,4 @@
 from survey.pagesV2 import custom_page
-from survey.network import survey_server as server
-from survey.surveys import survey
 
 
 class EmploymentPage(custom_page.CustomPage):
@@ -9,9 +7,7 @@ class EmploymentPage(custom_page.CustomPage):
     Q3 = "3.請問就業輔導老師『態度』(回覆問題、了解廠商)您滿意程度?*"
     Q4 = "4.請問就業輔導活動前對於『廠商資訊』(公司地址、職缺資訊等)是否有足夠資訊?*"
 
-    def __init__(self,
-                 parent_server: server.SurveyServer,
-                 parent_survey: survey.Survey):
+    def __init__(self, parent_server, parent_survey):
         _BLOCK_DICTS: list[dict] = [{
             'block_type': "score", 'title': EmploymentPage.Q1.format(),
             'max_score_desc': "非常符合", 'min_score_desc': "非常不符合"

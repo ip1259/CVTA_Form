@@ -1,14 +1,11 @@
-from survey.blocksV2.block import Block
-from survey.network import survey_server as server
-from survey.surveys import survey
+from survey.blocksV2 import interactive_block
 
 
-class InputBlock(Block):
+class InputBlock(interactive_block.InteractiveBlock):
 
-    def __init__(self, title: str, must: bool, parent_survey: survey.Survey, parent_server: server.SurveyServer):
-        self.server = parent_server
+    def __init__(self, title: str, must: bool, parent_survey, parent_server):
         self.must = must
-        super().__init__(title, parent_survey)
+        super().__init__(title, parent_survey, parent_server)
         self.result = 0
 
     def get_result(self, ip: str):
@@ -23,5 +20,5 @@ class InputBlock(Block):
     def get_response(self, ip: str):
         return self.title, self.get_result(ip)
 
-    def set_input_changed(self):
+    def set_interactive_triggered(self):
         pass

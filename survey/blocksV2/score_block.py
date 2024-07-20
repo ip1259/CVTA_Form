@@ -1,12 +1,10 @@
 from survey.blocksV2.input_block import InputBlock
-from survey.network import survey_server as server
-from survey.surveys import survey
 import gradio as gr
 
 
 class ScoreBlock(InputBlock):
     def __init__(self,
-                 title: str, parent_server: server.SurveyServer, parent_survey: survey.Survey,
+                 title: str, parent_server, parent_survey,
                  must: bool = True, max_score: int = 5,
                  min_score_desc: str = "非常不滿意",
                  max_score_desc: str = "非常滿意"):
@@ -31,7 +29,7 @@ class ScoreBlock(InputBlock):
                         with gr.Row():
                             gr.Column(scale=1, min_width=0)
                             self.score = gr.Radio(list(range(1, self._max_score + 1)), show_label=False,
-                                                  container=False, type="value", min_width=self._max_score*69)
+                                                  container=False, type="value", min_width=self._max_score*75)
                             gr.Column(scale=1, min_width=0)
                     with gr.Column(scale=3, min_width=70):
                         gr.Markdown(f'## <div align="right">{self._max_score_desc}</div>', show_label=False)
@@ -51,7 +49,7 @@ class ScoreBlock(InputBlock):
     def set_min_score_desc(self, desc: str):
         self._min_score_desc = desc
 
-    def set_input_changed(self):
+    def set_interactive_triggered(self):
         def set_result(value, request: gr.Request):
             if request:
                 # print("Radio selected : {0}".format(value), request.client.host)

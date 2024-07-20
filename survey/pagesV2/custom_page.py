@@ -3,27 +3,24 @@ import json
 import gradio as gr
 
 from survey.blocksV2 import *
-from survey.surveys import survey
-from survey.network import survey_server as server
 from survey.pagesV2 import page
 from survey import exceptions as sError
 
 
 class CustomPage(page.Page):
-    def __init__(self, parent_server: server.SurveyServer, parent_survey: survey.Survey):
+    def __init__(self, parent_server, parent_survey):
         super().__init__(parent_server, parent_survey)
 
     def _generate_page(self):
         with gr.Row() as self.page:
             for _b in self.page_blocks:
-                _t = _b.body
-                if isinstance(_b, input_block.InputBlock):
-                    _b.set_input_changed()
+                self.page.add(_b.body)
 
     def load(self, block_dicts: list[dict]):
-        for _block_dict in block_dicts:
-            self.page_blocks.append(self._parse_block(_block_dict))
-        self._generate_page()
+        with gr.Row() as self.page:
+            with gr.Column():
+                for _block_dict in block_dicts:
+                    self.page_blocks.append(self._parse_block(_block_dict))
 
     def load_json_file(self, file_path):
         """
@@ -45,6 +42,8 @@ class CustomPage(page.Page):
         if "block_type" in block_dict.keys():
             try:
                 match block_dict['block_type']:
+                    case "tail_btn":
+                        return tail_btn_block.TailButtonBlock(self.parent, self.server)
                     case "head":
                         return head_block.HeadBlock(block_dict['title'], block_dict['desc'], self.parent)
                     case "finish":
@@ -87,6 +86,11 @@ class CustomPage(page.Page):
                 raise sError.UnableParseBlock(2)
         else:
             raise sError.UnableParseBlock(0)
+
+    def set_page_interactive(self):
+        for _b in self.page_blocks:
+            if isinstance(_b, interactive_block.InteractiveBlock):
+                _b.set_interactive_triggered()
 
 
 if __name__ == '__main__':
