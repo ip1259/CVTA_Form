@@ -19,7 +19,7 @@ class SuggestionBlock(InputBlock):
                 _ip = request.client.host
                 self.set_result(_ip, value)
 
-        with gr.Row() as _row:
+        with gr.Row() as self.body:
             with gr.Column(min_width=0, scale=1):
                 pass
             with gr.Column(variant="panel", scale=3, min_width=640):
@@ -28,8 +28,16 @@ class SuggestionBlock(InputBlock):
 
             with gr.Column(min_width=0, scale=1):
                 pass
-            self.suggestion.change(set_result, [self.suggestion])
-        self.body = _row
+        # self.suggestion.change(set_result, [self.suggestion])
 
     def get_input_components(self):
         return [self.suggestion]
+
+    def set_input_changed(self):
+        def set_result(value, request: gr.Request):
+            if request:
+                # print("Suggestion changed {0}".format(value), request.client.host)
+                _ip = request.client.host
+                self.set_result(_ip, value)
+
+        self.suggestion.change(set_result, [self.suggestion])

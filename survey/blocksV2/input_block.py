@@ -22,3 +22,6 @@ class InputBlock(Block):
 
     def get_response(self, ip: str):
         return self.title, self.get_result(ip)
+
+    def set_input_changed(self):
+        pass

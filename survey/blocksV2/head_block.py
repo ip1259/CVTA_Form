@@ -14,7 +14,7 @@ class HeadBlock(Block):
             with gr.Column(min_width=0, scale=1):
                 pass
             with gr.Column(variant="panel", scale=3, min_width=640):
-                gr.Markdown(f"# {self.title}")
+                gr.Markdown(f'# <div align="center">{self.title}</div>')
                 gr.Markdown(self._desc)
             with gr.Column(min_width=0, scale=1):
                 pass

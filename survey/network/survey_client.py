@@ -1,6 +1,9 @@
-import survey.surveys.survey as sr
-import survey.blocksV2.input_block as input_block
+from __future__ import annotations
+from typing import TYPE_CHECKING
 import os
+if TYPE_CHECKING:
+    import survey.surveys.survey as sr
+    import survey.blocksV2.input_block as input_block
 
 
 class SurveyClient:

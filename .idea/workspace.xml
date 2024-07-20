@@ -4,17 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="分離 各Client的儲存物件&#10;self.cur_body_index未完成">
-      <change afterPath="$PROJECT_DIR$/survey/blocksV2/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/survey/blocksV2/block.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/survey/blocksV2/head_block.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/survey/blocksV2/input_block.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/survey/blocksV2/score_block.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/survey/blocksV2/suggestion_block.py" afterDir="false" />
+    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/survey/exceptions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/survey/pagesV2/custom_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/survey/pagesV2/employment_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/survey/pagesV2/finish_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/survey/pagesV2/head_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/survey/pagesV2/ta_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/survey/pagesV2/teacher_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_file/custom_test.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/blocksV2/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocksV2/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/blocksV2/head_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocksV2/head_block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/blocksV2/input_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocksV2/input_block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/blocksV2/score_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocksV2/score_block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/blocksV2/suggestion_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocksV2/suggestion_block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/network/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/network/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey/network/survey_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/network/survey_client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey/network/survey_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/network/survey_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/surveys/standard_survey.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/surveys/standard_survey.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/pagesV2/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pagesV2/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/survey/surveys/survey.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/surveys/survey.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,46 +59,32 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.app.executor": "Run",
+    "Python.custom_page.executor": "Run",
     "Python.employment_page.executor": "Run",
+    "Python.finish_page.executor": "Run",
     "Python.head_block.executor": "Run",
     "Python.head_page.executor": "Run",
+    "Python.survey_server.executor": "Run",
     "Python.ta_page.executor": "Run",
+    "Python.teacher_page (1).executor": "Run",
     "Python.teacher_page.executor": "Run",
+    "Python.test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "dev",
-    "last_opened_file_path": "D:/Data/Program_Project/Python/CVTA_Form/survey/blocksV2"
+    "last_opened_file_path": "F:/ProgramData/python/CVTA_Form/survey/pagesV2"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Data\Program_Project\Python\CVTA_Form\survey\blocksV2" />
+      <recent name="F:\ProgramData\python\CVTA_Form\survey\pagesV2" />
       <recent name="F:\ProgramData\python\CVTA_Form\survey\pages" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\ProgramData\python\CVTA_Form\survey\surveys" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.app">
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="CVTA_Form" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.finish_page">
     <configuration name="employment_page" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CVTA_Form" />
       <option name="ENV_FILES" value="" />
@@ -98,11 +94,33 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/survey/pages" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/survey/pagesV2" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/survey/pages/employment_page.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/survey/pagesV2/employment_page.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="finish_page" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CVTA_Form" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/survey/pagesV2" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/survey/pagesV2/finish_page.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -120,11 +138,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/survey/pages" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/survey/pagesV2" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/survey/pages/head_page.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/survey/pagesV2/head_page.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -142,11 +160,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/survey/pages" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/survey/pagesV2" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/survey/pages/ta_page.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/survey/pagesV2/ta_page.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -155,7 +173,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="teacher_page" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="teacher_page (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CVTA_Form" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -164,11 +182,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/survey/pages" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/survey/pagesV2" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/survey/pages/teacher_page.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/survey/pagesV2/teacher_page.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -179,11 +197,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.app" />
-        <item itemvalue="Python.teacher_page" />
+        <item itemvalue="Python.finish_page" />
+        <item itemvalue="Python.head_page" />
         <item itemvalue="Python.ta_page" />
         <item itemvalue="Python.employment_page" />
-        <item itemvalue="Python.head_page" />
+        <item itemvalue="Python.teacher_page (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -211,11 +229,40 @@
       <option name="project" value="LOCAL" />
       <updated>1721323289068</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="完成結束畫面">
+      <option name="closed" value="true" />
+      <created>1721370083200</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1721370083200</updated>
+    </task>
+    <task id="LOCAL-00003" summary="init">
+      <option name="closed" value="true" />
+      <created>1721371696312</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1721371696312</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="分離 各Client的儲存物件&#10;self.cur_body_index未完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="分離 各Client的儲存物件&#10;self.cur_body_index未完成" />
+    <MESSAGE value="完成結束畫面" />
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/survey/pagesV2/custom_page.py</url>
+          <line>97</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
