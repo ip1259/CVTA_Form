@@ -1,4 +1,4 @@
-from survey.blocksV2.block import Block
+from survey.blocks.block import Block
 
 
 class InteractiveBlock(Block):

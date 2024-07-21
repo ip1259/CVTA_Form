@@ -2,8 +2,8 @@ import json
 
 import gradio as gr
 
-from survey.blocksV2 import *
-from survey.pagesV2 import page
+from survey.blocks import *
+from survey.pages import page
 from survey import exceptions as sError
 
 

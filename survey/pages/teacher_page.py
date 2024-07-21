@@ -1,28 +1,44 @@
-from survey.pages.page import Page
-from survey.blocks.score_block import ScoreBlock
-from survey.blocks.suggestion_block import SuggestionBlock
-import gradio as gr
+from survey.pages import custom_page
 
 
-class TeacherPage(Page):
+class TeacherPage(custom_page.CustomPage):
     Q1 = "1.請問{0}老師的上課態度(上課認真、回覆問題、課程準備)您滿意程度?*"
     Q2 = "2.請問{0}老師的上課技巧(表達能力、教學方式、電腦操作、互動方式)滿意程度?*"
     Q3 = "3.請問{0}老師提供的上課教材充足?*"
     Q4 = "4.請問{0}老師的上下課時間拿捏是否適當?*"
     Q5 = "5.對{0}老師的建議或想說的話?  (非必填)"
 
-    def __init__(self, _teacher: str, parent, max_score: int = 5):
-        super().__init__(parent)
+    def __init__(self, _teacher: str,
+                 parent_server,
+                 parent_survey,
+                 max_score: int = 5):
         self._teacher = _teacher
         self._max_score = max_score
-        self._generate_page()
+        self._BLOCK_DICTS: list[dict] = [{
+            'block_type': "score", 'title': TeacherPage.Q1.format(self._teacher), 'max_score': self._max_score
+        }, {
+            'block_type': "score", 'title': TeacherPage.Q2.format(self._teacher), 'max_score': self._max_score
+        }, {
+            'block_type': "score", 'title': TeacherPage.Q3.format(self._teacher), 'max_score': self._max_score
+        }, {
+            'block_type': "score", 'title': TeacherPage.Q4.format(self._teacher), 'max_score': self._max_score
+        }, {
+            'block_type': "suggestion", 'title': TeacherPage.Q5.format(self._teacher)
+        }]
+        super().__init__(parent_server, parent_survey)
+        self.load(self._BLOCK_DICTS)
 
-    def _generate_page(self):
-        with gr.Row() as _row:
-            with gr.Column():
-                self.page_blocks.append(ScoreBlock(TeacherPage.Q1.format(self._teacher), self.parent))
-                self.page_blocks.append(ScoreBlock(TeacherPage.Q2.format(self._teacher), self.parent))
-                self.page_blocks.append(ScoreBlock(TeacherPage.Q3.format(self._teacher), self.parent))
-                self.page_blocks.append(ScoreBlock(TeacherPage.Q4.format(self._teacher), self.parent))
-                self.page_blocks.append(SuggestionBlock(TeacherPage.Q5.format(self._teacher), self.parent))
-        self.page = _row
+    def set_teacher(self, teacher: str):
+        self._teacher = teacher
+        self.load(self._BLOCK_DICTS)
+
+    def set_max_score(self, max_score: int):
+        self._max_score = max_score
+        self.load(self._BLOCK_DICTS)
+
+
+if __name__ == '__main__':
+    import gradio as gr
+    with gr.Blocks() as demo:
+        tp = TeacherPage("簡進士", None, None)
+    demo.launch()

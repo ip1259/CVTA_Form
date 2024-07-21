@@ -1,7 +1,7 @@
 import json
 
 from survey import exceptions as sError
-import survey.pagesV2 as sPages
+import survey.pages as sPages
 import gradio as gr
 
 from gradio.themes.base import Base as grBase

@@ -1,16 +1,18 @@
-import gradio as gr
-
-from survey.blocks.finish_block import FinishBlock
-from survey.pages.page import Page
+from survey.pages import custom_page
 
 
-class FinishPage(Page):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self._generate_page()
+class FinishPage(custom_page.CustomPage):
+    def __init__(self, parent_server, parent_survey):
+        _BLOCK_DICTS: list[dict] = [{
+            'block_type': "finish"
+        }]
+        super().__init__(parent_server, parent_survey)
+        self.load(_BLOCK_DICTS)
 
-    def _generate_page(self):
-        with gr.Row() as _row:
-            with gr.Column():
-                self.page_blocks.append(FinishBlock())
-        self.page = _row
+
+if __name__ == '__main__':
+    import gradio as gr
+
+    with gr.Blocks() as demo:
+        tp = FinishPage(None, None)
+    demo.launch()

@@ -1,6 +1,6 @@
 import gradio as gr
 
-from survey.blocksV2 import interactive_block
+from survey.blocks import interactive_block
 
 
 class TailButtonBlock(interactive_block.InteractiveBlock):

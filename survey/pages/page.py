@@ -1,13 +1,13 @@
 import gradio as gr
 
-from survey.blocks.block import Block
-from survey.blocks.input_block import InputBlock
+from survey.blocks import block, input_block
 
 
 class Page:
-    def __init__(self, parent):
-        self.parent = parent
-        self.page_blocks: list[Block] = []
+    def __init__(self, parent_server, parent_survey):
+        self.parent = parent_survey
+        self.server = parent_server
+        self.page_blocks: list[block.Block] = []
         self.page: gr.Row | None = None
 
     def _generate_page(self):
@@ -15,11 +15,9 @@ class Page:
 
     def get_page_result(self, ip: str):
         _results = []
-        _cursor = 0
-        for i, b in enumerate(self.page_blocks):
-            if isinstance(b, InputBlock):
+        for b in self.page_blocks:
+            if isinstance(b, input_block.InputBlock):
                 _results.append((type(b), b.must, b.get_result(ip)))
-                _cursor += 1
         return _results
 
     def must_has_done(self, ip: str):
@@ -33,7 +31,7 @@ class Page:
     def get_input_components(self):
         _result = []
         for b in self.page_blocks:
-            if isinstance(b, InputBlock):
+            if isinstance(b, input_block.InputBlock):
                 _result.append(b)
         # print(_result)
         return _result
@@ -41,6 +39,6 @@ class Page:
     def get_page_response(self, ip: str):
         _response = []
         for b in self.page_blocks:
-            if isinstance(b, InputBlock):
+            if isinstance(b, input_block.InputBlock):
                 _response.append(b.get_response(ip))
         return _response

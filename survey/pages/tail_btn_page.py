@@ -1,4 +1,4 @@
-from survey.pagesV2 import custom_page
+from survey.pages import custom_page
 
 
 class TailButtonPage(custom_page.CustomPage):

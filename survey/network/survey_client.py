@@ -1,5 +1,5 @@
 import os
-import survey.blocksV2.input_block as input_block
+import survey.blocks.input_block as input_block
 
 
 class SurveyClient:
