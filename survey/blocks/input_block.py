@@ -1,24 +1,18 @@
-from survey.blocks import interactive_block
+import gradio as gr
+
+from .interactive_block import InteractiveBlock
 
 
-class InputBlock(interactive_block.InteractiveBlock):
+class InputBlock(InteractiveBlock):
 
-    def __init__(self, title: str, must: bool, parent_survey, parent_server):
+    def __init__(self, title: str, desc: str, must: bool):
         self.must = must
-        super().__init__(title, parent_survey, parent_server)
-        self.result = 0
+        self.title = title
+        self.desc = desc
+        super().__init__()
 
-    def get_result(self, ip: str):
-        return self.server.clients[(self.parent_survey, ip)].response.response[self][2]
+    def get_input_components(self) -> tuple[bool, gr.components.Component, str]:
+        return self.must, self.interactions[0], self.title
 
-    def set_result(self, ip: str, value):
-        self.server.clients[(self.parent_survey, ip)].response.set_response(self, value)
-
-    def get_input_components(self):
-        pass
-
-    def get_response(self, ip: str):
-        return self.title, self.get_result(ip)
-
-    def set_interactive_triggered(self):
+    def set_interactive_triggered(self, user_store: gr.State):
         pass

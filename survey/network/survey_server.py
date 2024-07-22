@@ -1,7 +1,6 @@
 import uvicorn
 
-import survey.surveys.survey as sr
-from . import survey_client as sc
+from survey.surveys import BaseSurvey
 from fastapi import FastAPI
 import os
 import gradio as gr
@@ -12,9 +11,8 @@ class SurveyServer:
         """
 
         """
-        # clients: 儲存用戶端資料為dict型別,key值為一tuple，(Survey, ip-address-string)
-        self.clients: dict[(sr.Survey, str), sc.SurveyClient] = {}
-        self.survey: list[sr.Survey] = []
+        self.survey: list[BaseSurvey] = []
+        self.load_surveys()
 
     def load_surveys(self):
         _path = os.getcwd()
@@ -27,7 +25,7 @@ class SurveyServer:
                 print(os.path.join(_path, _f))
                 _survey_files.append(os.path.join(_path, _f))
         for _sf in _survey_files:
-            _tmp = sr.Survey(self)
+            _tmp = BaseSurvey()
             _tmp.set_survey(_sf)
             self.survey.append(_tmp)
 

@@ -1,1 +1,1 @@
-from . import survey_server, survey_client
+from .survey_server import SurveyServer

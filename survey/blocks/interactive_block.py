@@ -1,10 +1,11 @@
-from survey.blocks.block import Block
+from .block import Block
+import gradio as gr
 
 
 class InteractiveBlock(Block):
-    def __init__(self, title: str, parent_survey, parent_server):
-        self.server = parent_server
-        super().__init__(title, parent_survey)
+    def __init__(self):
+        self.interactions: list[gr.components.Component] = []
+        super().__init__()
 
-    def set_interactive_triggered(self):
+    def set_interactive_triggered(self, user_store: gr.State):
         pass
