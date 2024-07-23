@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="重構中V3完成，不再使用自定義客戶端資料結構，改用gradio.State暫存，點及送出按鈕時才將作答結果計入並儲存">
+    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="修正問卷選填項目無法讀入問題&#10;修正重複表單項目問題">
+      <change afterPath="$PROJECT_DIR$/survey/survey_system_entry.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Surveys/113F01.sr" beforeDir="false" afterPath="$PROJECT_DIR$/Surveys/113F01.sr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/blocks/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/blocks/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/custom_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/custom_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/employment_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/employment_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/finish_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/finish_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/head_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/head_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/ta_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/ta_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/tail_btn_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/tail_btn_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/pages/teacher_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/pages/teacher_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/survey/surveys/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/surveys/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Surveys/example.sr.json" beforeDir="false" afterPath="$PROJECT_DIR$/Surveys/example.sr.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721641391458</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="修正問卷選填項目無法讀入問題&#10;修正重複表單項目問題">
+      <option name="closed" value="true" />
+      <created>1721723094853</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1721723094853</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -260,7 +259,8 @@
     <MESSAGE value="完成結束畫面" />
     <MESSAGE value="init" />
     <MESSAGE value="重構中V3完成，不再使用自定義客戶端資料結構，改用gradio.State暫存，點及送出按鈕時才將作答結果計入並儲存" />
-    <option name="LAST_COMMIT_MESSAGE" value="重構中V3完成，不再使用自定義客戶端資料結構，改用gradio.State暫存，點及送出按鈕時才將作答結果計入並儲存" />
+    <MESSAGE value="修正問卷選填項目無法讀入問題&#10;修正重複表單項目問題" />
+    <option name="LAST_COMMIT_MESSAGE" value="修正問卷選填項目無法讀入問題&#10;修正重複表單項目問題" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
