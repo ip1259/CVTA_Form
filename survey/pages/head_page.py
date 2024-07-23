@@ -12,19 +12,19 @@ class HeadPage(CustomPage):
             'block_type': "head", 'title': self._title, 'desc': self._desc
         }]
         super().__init__()
-        self.load(self._BLOCK_DICTS)
 
     def set_desc(self, desc: str):
         self._desc = desc
         self.reload_block_dicts()
-        self.load(self._BLOCK_DICTS)
 
     def set_title(self, title: str):
         self._title = title
         self.reload_block_dicts()
-        self.load(self._BLOCK_DICTS)
 
     def reload_block_dicts(self):
         self._BLOCK_DICTS: list[dict] = [{
             'block_type': "head", 'title': self._title, 'desc': self._desc
         }]
+
+    def load_self(self):
+        self.load(self._BLOCK_DICTS)

@@ -16,16 +16,21 @@ class PageParser:
             try:
                 match page_dict['page_type']:
                     case "tail_btn":
-                        return TailButtonPage(page_dict['body_count'])
+                        _tp = TailButtonPage(page_dict['body_count'])
+                        _tp.load_self()
+                        return _tp
                     case "head":
                         _hp = HeadPage(page_dict['title'])
                         if "desc" in page_dict.keys():
                             if not isinstance(page_dict['desc'], str):
                                 raise UnableParsePage(3, f"{page_dict['page_type']}-'desc'")
                             _hp.set_desc(page_dict['desc'])
+                        _hp.load_self()
                         return _hp
                     case "finish":
-                        return FinishPage()
+                        _fp = FinishPage()
+                        _fp.load_self()
+                        return _fp
                     case "teacher":
                         _tp = TeacherPage(page_dict['teacher'])
                         if "max_score" in page_dict.keys():
@@ -36,6 +41,7 @@ class PageParser:
                             if not isinstance(page_dict['desc'], str):
                                 raise UnableParsePage(3, f"{page_dict['page_type']}-'desc'")
                             _tp.set_desc(page_dict['desc'])
+                        _tp.load_self()
                         return _tp
                     case "ta":
                         _tp = TAPage()
@@ -43,9 +49,12 @@ class PageParser:
                             if not isinstance(page_dict['max_score'], int):
                                 raise UnableParsePage(3, f"{page_dict['page_type']}-'max_score'")
                             _tp.set_max_score(page_dict['max_score'])
+                        _tp.load_self()
                         return _tp
                     case "employment":
-                        return EmploymentPage()
+                        _ep = EmploymentPage()
+                        _ep.load_self()
+                        return _ep
                     case "custom":
                         _cp = CustomPage()
                         _cp.load(page_dict['block_dicts'])

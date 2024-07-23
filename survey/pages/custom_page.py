@@ -10,18 +10,17 @@ class CustomPage(Page):
     def __init__(self):
         super().__init__()
 
-    def _generate_page(self):
-        with gr.Row() as self.page:
-            for _b in self.page_blocks:
-                self.page.add(_b.body)
-
     def load(self, block_dicts: list[dict]):
+        self.page_blocks = []
         with gr.Row() as self.page:
             with gr.Column():
                 for _block_dict in block_dicts:
                     self.page_blocks.append(BlockParser.parse_block(_block_dict))
 
-    def reload_block_dicts(self):
+    def load_self(self):
+        pass
+
+    def reload_block_dicts(self, *args, **kwargs):
         pass
 
     def load_json_file(self, file_path):

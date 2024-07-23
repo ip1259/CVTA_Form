@@ -8,7 +8,7 @@ class EmploymentPage(CustomPage):
     Q4 = "4.請問就業輔導活動前對於『廠商資訊』(公司地址、職缺資訊等)是否有足夠資訊?*"
 
     def __init__(self):
-        _BLOCK_DICTS: list[dict] = [{
+        self._BLOCK_DICTS: list[dict] = [{
             'block_type': "score", 'title': EmploymentPage.Q1.format(),
             'max_score_desc': "非常符合", 'min_score_desc': "非常不符合"
         }, {
@@ -20,4 +20,6 @@ class EmploymentPage(CustomPage):
             'max_score_desc': "非常充足", 'min_score_desc': "非常不足"
         }]
         super().__init__()
-        self.load(_BLOCK_DICTS)
+
+    def load_self(self):
+        self.load(self._BLOCK_DICTS)

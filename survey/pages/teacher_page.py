@@ -25,33 +25,53 @@ class TeacherPage(CustomPage):
                 'block_type': "suggestion", 'title': TeacherPage.Q5.format(self._teacher)
             }]
         super().__init__()
-        self.load(self._BLOCK_DICTS)
 
     def set_teacher(self, teacher: str):
         self._teacher = teacher
         self.reload_block_dicts()
-        self.load(self._BLOCK_DICTS)
 
     def set_max_score(self, max_score: int):
         self._max_score = max_score
         self.reload_block_dicts()
-        self.load(self._BLOCK_DICTS)
 
     def set_desc(self, desc: str):
         self._desc = desc
-        self.reload_block_dicts()
-        self.load(self._BLOCK_DICTS)
+        self.reload_block_dicts(desc=True)
 
-    def reload_block_dicts(self):
-        self._BLOCK_DICTS: list[dict] = [
-            {
-                'block_type': "score", 'title': TeacherPage.Q1.format(self._teacher), 'max_score': self._max_score
-            }, {
-                'block_type': "score", 'title': TeacherPage.Q2.format(self._teacher), 'max_score': self._max_score
-            }, {
-                'block_type': "score", 'title': TeacherPage.Q3.format(self._teacher), 'max_score': self._max_score
-            }, {
-                'block_type': "score", 'title': TeacherPage.Q4.format(self._teacher), 'max_score': self._max_score
-            }, {
-                'block_type': "suggestion", 'title': TeacherPage.Q5.format(self._teacher)
-            }]
+    def reload_block_dicts(self, *args, **kwargs):
+        if 'desc' in kwargs.keys():
+            if kwargs['desc']:
+                self._BLOCK_DICTS: list[dict] = [
+                    {
+                        'block_type': "desc_block", 'title': self._desc
+                    }, {
+                        'block_type': "score", 'title': TeacherPage.Q1.format(self._teacher),
+                        'max_score': self._max_score
+                    }, {
+                        'block_type': "score", 'title': TeacherPage.Q2.format(self._teacher),
+                        'max_score': self._max_score
+                    }, {
+                        'block_type': "score", 'title': TeacherPage.Q3.format(self._teacher),
+                        'max_score': self._max_score
+                    }, {
+                        'block_type': "score", 'title': TeacherPage.Q4.format(self._teacher),
+                        'max_score': self._max_score
+                    }, {
+                        'block_type': "suggestion", 'title': TeacherPage.Q5.format(self._teacher)
+                    }]
+        else:
+            self._BLOCK_DICTS: list[dict] = [
+                {
+                    'block_type': "score", 'title': TeacherPage.Q1.format(self._teacher), 'max_score': self._max_score
+                }, {
+                    'block_type': "score", 'title': TeacherPage.Q2.format(self._teacher), 'max_score': self._max_score
+                }, {
+                    'block_type': "score", 'title': TeacherPage.Q3.format(self._teacher), 'max_score': self._max_score
+                }, {
+                    'block_type': "score", 'title': TeacherPage.Q4.format(self._teacher), 'max_score': self._max_score
+                }, {
+                    'block_type': "suggestion", 'title': TeacherPage.Q5.format(self._teacher)
+                }]
+
+    def load_self(self):
+        self.load(self._BLOCK_DICTS)

@@ -27,7 +27,7 @@ class BlockParser:
                                 raise UnableParseBlock(3, f"{block_dict['block_type']}-'title'")
                             _fb.title = block_dict['title']
                         return _fb
-                    case "desc":
+                    case "desc_block":
                         return DescriptionBlock(block_dict['title'])
                     case "score":
                         _sb = ScoreBlock(block_dict['title'])

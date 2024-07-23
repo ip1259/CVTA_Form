@@ -16,12 +16,10 @@ class TAPage(CustomPage):
             'block_type': "suggestion", 'title': TAPage.Q3.format()
         }]
         super().__init__()
-        self.load(self._BLOCK_DICTS)
 
     def set_max_score(self, max_score: int):
         self._max_score = max_score
         self.reload_block_dicts()
-        self.load(self._BLOCK_DICTS)
 
     def reload_block_dicts(self):
         self._BLOCK_DICTS: list[dict] = [{
@@ -31,3 +29,6 @@ class TAPage(CustomPage):
         }, {
             'block_type': "suggestion", 'title': TAPage.Q3.format()
         }]
+
+    def load_self(self):
+        self.load(self._BLOCK_DICTS)

@@ -178,23 +178,21 @@ class BaseSurvey:
             try:
                 self.survey_id = survey_dict['survey_id']
                 self.set_theme(survey_dict['survey_theme'])
+                _user_data = {"cur_page": 0, "ip": "", "time_stamp": "", "total_score": 0, "results": []}
 
                 with (gr.Blocks(theme=self.survey_theme[0], css=self.survey_theme[1],
                                 js=s_themes.SurveyTheme.JS) as self.survey):
-                    _user_data = {"cur_page": 0, "ip": "", "time_stamp": "", "total_score": 0, "results": []}
-                    self.user_store = gr.State()
+                    self.user_store = gr.State(_user_data)
                     with gr.Row():
                         gr.Column(scale=1, min_width=0)
                         with gr.Column(scale=3, min_width=640):
                             for _hp in survey_dict['heads']:
                                 _t = PageParser.parse_page(_hp)
                                 self.heads.append(_t)
-                                _t.set_page_interactive()
                             for _i, _bp in enumerate(survey_dict['bodies']):
                                 _b = PageParser.parse_page(_bp)
-                                _user_data['results'].append([None for _i in range(len(_b.get_input_components()))])
                                 self.bodies.append(_b)
-                                _b.set_page_interactive()
+                                _user_data['results'].append([None for _i in range(len(_b.get_input_components()))])
                                 if len(self.bodies) == 1:
                                     _b.page.visible = True
                                 else:
@@ -204,41 +202,37 @@ class BaseSurvey:
                                 elif _i == len(survey_dict['bodies']) - 1:
                                     _b = FinishPage()
                                     self.bodies.append(_b)
-                                    _b.set_page_interactive()
 
                             self.tail = TailButtonPage(len(self.bodies))
-                            _btns = self.tail.get_buttons()
-                            self.user_store.value = _user_data
-                            _inputs = [self.user_store]
-                            [_inputs.extend([_t[1] for _t in _p]) for _p in self.get_survey_input_components()]
-                            _inputs_set = set(_inputs)
-                            _outputs = [_p.page for _p in self.bodies]
-                            _outputs.extend([self.tail.page_blocks[0].prev_warp,
-                                             self.tail.page_blocks[0].next_warp,
-                                             self.tail.page_blocks[0].send_warp])
-                            _outputs_set = set(_outputs)
-
-                            to_top_js = """
-                                        function to_top() {
-                                            window.scrollTo(0,0);
-                                        }
-                                        """
-
-                            _btns[0].click(self.prev_click, inputs=_inputs_set, outputs={self.user_store})
-                            _btns[1].click(self.next_click, inputs=_inputs_set, outputs=self.user_store)
-                            _btns[2].click(self.send_click, inputs=_inputs_set, outputs={self.user_store})
-                            self.user_store.change(self.user_store_changed, inputs=self.user_store,
-                                                   outputs=_outputs_set,
-                                                   js=to_top_js)
-
-                            # self.survey.load(self.on_survey_load)
-                            # self.survey.unload(self.on_survey_unload)
-                            self.user_store = gr.State(_user_data)
-
+                            self.tail.load_self()
                         gr.Column(scale=1, min_width=0)
 
+                with self.survey:
+                    _btns = self.tail.get_buttons()
+                    self.user_store.value = _user_data
+                    _inputs = [self.user_store]
+                    [_inputs.extend([_t[1] for _t in _p]) for _p in self.get_survey_input_components()]
+                    _inputs_set = set(_inputs)
+                    _outputs = [_p.page for _p in self.bodies]
+                    _outputs.extend([self.tail.page_blocks[0].prev_warp,
+                                     self.tail.page_blocks[0].next_warp,
+                                     self.tail.page_blocks[0].send_warp])
+                    _outputs_set = set(_outputs)
+
+                    to_top_js = """
+                                function to_top() {
+                                    window.scrollTo(0,0);
+                                }
+                                """
+
+                    _btns[0].click(self.prev_click, inputs=_inputs_set, outputs={self.user_store})
+                    _btns[1].click(self.next_click, inputs=_inputs_set, outputs=self.user_store)
+                    _btns[2].click(self.send_click, inputs=_inputs_set, outputs={self.user_store})
+                    self.user_store.change(self.user_store_changed, inputs=self.user_store,
+                                           outputs=_outputs_set,
+                                           js=to_top_js)
             except Exception as e:
-                print(e)
+                print(e.with_traceback(e.__traceback__))
                 raise UnableLoadSurvey(-1)
         else:
             raise UnableLoadSurvey(0)

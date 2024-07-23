@@ -10,27 +10,38 @@
   "bodies": [
     {
       "page_type": "teacher",
-      "teacher": "林宜芳"
+      "teacher": "林宜芳",
+      "desc": "課程:提案簡報製作技巧, HTML5與CSS3"
     },
     {
       "page_type": "teacher",
-      "teacher":  "簡進士"
+      "teacher":  "簡進士",
+      "desc": "課程:App與Arduino整合設計, 無線通訊應用與實作, Python基礎, Python與Arduino、App整合設計, 雲端資料庫設計, AI影像圖形辨識, 資通訊科技與智慧物聯網概論, AI機器學習訓練分析"
     },
     {
       "page_type": "teacher",
-      "teacher": "陳冠華"
+      "teacher": "陳冠華",
+      "desc": "課程:JavaScript與JQuery"
     },
     {
       "page_type": "teacher",
-      "teacher": "陳柄宏"
+      "teacher": "陳柄宏",
+      "desc": "課程:自動控制電器原理與元件介紹, 自動控制液氣壓原理與元件介紹, Arduino SKETCH程式設計, 智慧機電整合概論, 前端應用程式設計, 智慧應用專題製作"
     },
     {
       "page_type": "teacher",
-      "teacher": "王綉蘭"
+      "teacher": "王綉蘭",
+      "desc": "課程:職場身心安全"
     },
     {
       "page_type": "teacher",
-      "teacher": "林瓊嘉"
+      "teacher": "林瓊嘉",
+      "desc": "課程:性別平等課程"
+    },
+    {
+      "page_type": "teacher",
+      "teacher": "李淑如",
+      "desc": "課程:就業市場趨勢分析, 求職技巧"
     },
     {
       "page_type": "employment"
