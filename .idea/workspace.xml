@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="修正問卷選填項目無法讀入問題&#10;修正重複表單項目問題">
-      <change afterPath="$PROJECT_DIR$/survey/survey_system_entry.py" afterDir="false" />
+    <list default="true" id="06df9ea2-3476-4a0a-8874-5ce7553fad04" name="Changes" comment="init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Surveys/example.sr.json" beforeDir="false" afterPath="$PROJECT_DIR$/Surveys/example.sr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/manager/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/manager/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/survey/manager/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/survey/manager/manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +47,7 @@
     "Python.finish_page.executor": "Run",
     "Python.head_block.executor": "Run",
     "Python.head_page.executor": "Run",
+    "Python.manager.executor": "Run",
     "Python.survey_server.executor": "Run",
     "Python.ta_page.executor": "Run",
     "Python.teacher_page (1).executor": "Run",
@@ -54,7 +56,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "dev",
-    "last_opened_file_path": "F:/ProgramData/python/CVTA_Form/survey/pagesV2"
+    "last_opened_file_path": "D:/Data/Program_Project/Python/CVTA_Form/venv/Scripts/pyqt6-tools.exe",
+    "settings.editor.selected.configurable": "preferences.externalTools"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -66,29 +69,7 @@
       <recent name="F:\ProgramData\python\CVTA_Form\survey\surveys" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
-    <configuration name="employment_page" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="CVTA_Form" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/survey/pagesV2" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/survey/pagesV2/employment_page.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.manager">
     <configuration name="finish_page" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CVTA_Form" />
       <option name="ENV_FILES" value="" />
@@ -125,6 +106,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/survey/pagesV2/head_page.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="manager" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CVTA_Form" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/survey/manager" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/survey/manager/manager.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -179,11 +182,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.manager" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.finish_page" />
         <item itemvalue="Python.head_page" />
         <item itemvalue="Python.ta_page" />
-        <item itemvalue="Python.employment_page" />
       </list>
     </recent_temporary>
   </component>
@@ -227,60 +230,13 @@
       <option name="project" value="LOCAL" />
       <updated>1721371696312</updated>
     </task>
-    <task id="LOCAL-00004" summary="重構中V3完成，不再使用自定義客戶端資料結構，改用gradio.State暫存，點及送出按鈕時才將作答結果計入並儲存">
-      <option name="closed" value="true" />
-      <created>1721641364382</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1721641364382</updated>
-    </task>
-    <task id="LOCAL-00005" summary="重構中V3完成，不再使用自定義客戶端資料結構，改用gradio.State暫存，點及送出按鈕時才將作答結果計入並儲存">
-      <option name="closed" value="true" />
-      <created>1721641391458</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1721641391458</updated>
-    </task>
-    <task id="LOCAL-00006" summary="修正問卷選填項目無法讀入問題&#10;修正重複表單項目問題">
-      <option name="closed" value="true" />
-      <created>1721723094853</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1721723094853</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="分離 各Client的儲存物件&#10;self.cur_body_index未完成" />
     <MESSAGE value="完成結束畫面" />
     <MESSAGE value="init" />
-    <MESSAGE value="重構中V3完成，不再使用自定義客戶端資料結構，改用gradio.State暫存，點及送出按鈕時才將作答結果計入並儲存" />
-    <MESSAGE value="修正問卷選填項目無法讀入問題&#10;修正重複表單項目問題" />
-    <option name="LAST_COMMIT_MESSAGE" value="修正問卷選填項目無法讀入問題&#10;修正重複表單項目問題" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/survey/blocks/__init__.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/survey/blocks/head_block.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="self.body.parent" language="Python" />
-      </configuration>
-    </watches-manager>
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
 </project>

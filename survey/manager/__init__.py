@@ -1,1 +1,1 @@
-# package
+from .manager import SurveySystemManager
