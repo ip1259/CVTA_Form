@@ -1,3 +1,4 @@
+import os
 
 
 survey = {'class_name': "113F01_AIOT物聯網智慧應用設計班",
